@@ -1,0 +1,38 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_SIXAXIS_270
+	bool "BMI270 sensor example"
+	default n
+	depends on SENSORS_BMI270
+	---help---
+		Enable the 6 axis sensor example
+
+if EXAMPLES_SIXAXIS_270
+
+config EXAMPLES_SIXAXIS_UORB_270
+	bool "BMI270 sensor uorb example"
+	default n
+	depends on SENSORS_BMI270_UORB
+	---help---
+		Enables Work with the UORB or Character Device interface.
+		If not set, the Character Device is used by default.
+
+config EXAMPLES_SIXAXIS_270_PROGNAME
+	string "Program name"
+	default "sixaxis270"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_SIXAXIS_270_PRIORITY
+	int "sixaxis270 task priority"
+	default 100
+
+config EXAMPLES_SIXAXIS_270_STACKSIZE
+	int "sixaxis270 stack size"
+	default DEFAULT_TASK_STACKSIZE
+
+endif
